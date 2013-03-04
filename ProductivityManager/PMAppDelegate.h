@@ -13,6 +13,13 @@
 {
     IBOutlet NSMenu *statusMenu;
     NSStatusItem * statusItem;
+	
+#pragma mark - Pref outlets
+	IBOutlet NSButton *dismissCB;
+	IBOutlet NSButton *soundCB;
+	IBOutlet NSButton *loginCB;
+	IBOutlet NSButton *enterPMCB;
+	IBOutlet NSSlider *strictSlider;
 }
 
 @property (unsafe_unretained) IBOutlet NSWindow *prefWindow;

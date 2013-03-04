@@ -5,24 +5,18 @@ Add About window
 Add Preferences Window
 
 Add Preferences:
+Later: Add ability for user to use their own sound
 
-Notifications go away automatically or need to be dismissed
-List of applications that are considered "productivity" apps
-    provide + and - buttons ---- when click +, get list of applications that are on the computer but allow to specify Other
-    Do not allow user to set ProductivityManager as one of the Productivity apps
-Strictness level    1 - 5
-
-Play sound or not
-    Later: Add ability for user to use their own sound
-Open at login
-
-Add timer - use pref time value
+Add backend for prefs
 
 Read in applications from prefs
 
 Add notifications based on applicaiton list
 
-Add menu graphic
+Get graphic for each application - display next to name
+for this, we apparently need the full path to the application
+This brings up quandry:
+do we store dictionary of application name to full path of application or do we store array of full paths to applications and at display time do some fancy string manipulation?
 
 implement the open at login vs. not
 

@@ -54,6 +54,69 @@
 }
 
 
+- (IBAction)updatePrefs:(id)sender
+{	
+	if ([sender isEqualTo:dismissCB])
+		NSLog(@"dismiss");
+	else if ([sender isEqualTo:soundCB])
+		NSLog(@"sound");
+	else if ([sender isEqualTo:loginCB])
+	{
+		NSButton *s = (NSButton *)sender;
+		[enterPMCB setEnabled:s.state];
+		if (s.state)
+			enterPMCB.toolTip = @"Enter Productivity Mode automatically upon logging in";
+		else
+		{
+			enterPMCB.toolTip = @"";
+			enterPMCB.state = 0;
+		}
+	}
+	else if ([sender isEqualTo:enterPMCB])
+	{
+		NSLog(@"enter");
+	}
+	
+	
+}
+
+- (IBAction)addProApp:(NSButton *)sender
+{
+	NSArray *temp;
+	NSString *name = @"";
+	NSOpenPanel *openDlg = [NSOpenPanel openPanel];
+	openDlg.canChooseDirectories = NO;
+	openDlg.canChooseFiles = YES;
+	openDlg.canCreateDirectories = NO;
+	openDlg.allowsMultipleSelection = YES;
+	openDlg.allowedFileTypes = [NSArray arrayWithObjects:@"app", @"APP", nil];
+	openDlg.directoryURL = [NSURL URLWithString:@"file://localhost/Applications/"];
+	if ([openDlg runModal])
+	{
+		for (NSURL *url in [openDlg URLs])
+		{
+			name = url.relativeString;
+			name = [[name componentsSeparatedByString:@".app"] objectAtIndex:0];
+			temp = [name componentsSeparatedByString:@"/"];
+			name = [temp objectAtIndex:temp.count - 1];
+			NSLog(@"app name: %@", name);
+			
+			/* if (app name ! in prefs.appList && name != ProductivityManager)
+			 NSMutableArray *wee = [prefs.appList mutableCopy];
+			 [wee addObject:name];
+			 prefs.appList = [wee copy];
+			 */
+		}
+	}
+}
+
+
+- (IBAction)delProApp:(NSButton *)sender
+{
+	
+}
+
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
