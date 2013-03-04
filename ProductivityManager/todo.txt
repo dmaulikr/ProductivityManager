@@ -39,3 +39,5 @@ bugs to fix
 
 when user clicks on notificaiton (whether just clicking or when clicking the OK or Later buttons), make sure it sets the previous applicaiton as foreground
 
+Application icon is not showing up in notifications
+

@@ -19,6 +19,8 @@
 		DB2C2A9D16E431AE001384E4 /* ProductivityManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2C2A9C16E431AE001384E4 /* ProductivityManagerTests.m */; };
 		DB2C2AA816E43712001384E4 /* PMModeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2C2AA716E43712001384E4 /* PMModeManager.m */; };
 		DB2C2AAA16E43A58001384E4 /* todo.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB2C2AA916E43A58001384E4 /* todo.txt */; };
+		DBAB410416E48BD600BCB5C2 /* pen-and-notepad-icon-vector-981374.png in Resources */ = {isa = PBXBuildFile; fileRef = DBAB410316E48BD600BCB5C2 /* pen-and-notepad-icon-vector-981374.png */; };
+		DBAB410816E48DD900BCB5C2 /* PMIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = DBAB410716E48DD900BCB5C2 /* PMIcon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		DB2C2AA616E43712001384E4 /* PMModeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMModeManager.h; sourceTree = "<group>"; };
 		DB2C2AA716E43712001384E4 /* PMModeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMModeManager.m; sourceTree = "<group>"; };
 		DB2C2AA916E43A58001384E4 /* todo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = todo.txt; sourceTree = "<group>"; };
+		DBAB410316E48BD600BCB5C2 /* pen-and-notepad-icon-vector-981374.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pen-and-notepad-icon-vector-981374.png"; sourceTree = "<group>"; };
+		DBAB410716E48DD900BCB5C2 /* PMIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PMIcon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 		DB2C2A6616E431AE001384E4 = {
 			isa = PBXGroup;
 			children = (
+				DBAB410716E48DD900BCB5C2 /* PMIcon.icns */,
 				DB2C2A7816E431AE001384E4 /* ProductivityManager */,
 				DB2C2A9516E431AE001384E4 /* ProductivityManagerTests */,
 				DB2C2A7116E431AE001384E4 /* Frameworks */,
@@ -134,6 +139,7 @@
 			children = (
 				DB2C2A7A16E431AE001384E4 /* ProductivityManager-Info.plist */,
 				DB2C2A7B16E431AE001384E4 /* InfoPlist.strings */,
+				DBAB410316E48BD600BCB5C2 /* pen-and-notepad-icon-vector-981374.png */,
 				DB2C2A7E16E431AE001384E4 /* main.m */,
 				DB2C2A8016E431AE001384E4 /* ProductivityManager-Prefix.pch */,
 				DB2C2A8116E431AE001384E4 /* Credits.rtf */,
@@ -237,6 +243,8 @@
 				DB2C2A8316E431AE001384E4 /* Credits.rtf in Resources */,
 				DB2C2A8916E431AE001384E4 /* MainMenu.xib in Resources */,
 				DB2C2AAA16E43A58001384E4 /* todo.txt in Resources */,
+				DBAB410416E48BD600BCB5C2 /* pen-and-notepad-icon-vector-981374.png in Resources */,
+				DBAB410816E48DD900BCB5C2 /* PMIcon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +471,7 @@
 				DB2C2AA216E431AE001384E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB2C2AA316E431AE001384E4 /* Build configuration list for PBXNativeTarget "ProductivityManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +480,7 @@
 				DB2C2AA516E431AE001384E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
