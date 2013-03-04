@@ -1,0 +1,23 @@
+TODO:
+
+Add About window
+
+Add Preferences Window
+
+Add Preferences:
+
+Notifications go away automatically or need to be dismissed
+List of applications that are considered "productivity" apps
+Time interval to wait before asking user if they're being productive or not
+Open at login
+
+Add timer - use pref time value
+
+Read in applications from prefs
+
+Add notifications based on applicaiton list
+
+Add menu graphic
+
+implement the open at login vs. not
+
