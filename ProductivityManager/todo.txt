@@ -8,7 +8,12 @@ Add Preferences:
 
 Notifications go away automatically or need to be dismissed
 List of applications that are considered "productivity" apps
-Time interval to wait before asking user if they're being productive or not
+    provide + and - buttons ---- when click +, get list of applications that are on the computer but allow to specify Other
+    Do not allow user to set ProductivityManager as one of the Productivity apps
+Strictness level    1 - 5
+
+Play sound or not
+    Later: Add ability for user to use their own sound
 Open at login
 
 Add timer - use pref time value
@@ -20,4 +25,17 @@ Add notifications based on applicaiton list
 Add menu graphic
 
 implement the open at login vs. not
+
+Add Sparkle?
+
+
+Use algorithm:
+every minute, check what application the user is using. If user is not using a productivity app, increase the count. If the count exceeds X (where X is based on strictness level), notify user.
+Beware of bug: user changing strictness level when in Productivity Mode: if count is too high - app might show notification even if they are in a productivity mode - perhaps add a check for (count too high && currentApp is ! productivity)
+
+
+
+bugs to fix
+
+when user clicks on notificaiton (whether just clicking or when clicking the OK or Later buttons), make sure it sets the previous applicaiton as foreground
 

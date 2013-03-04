@@ -13,5 +13,6 @@
 @property BOOL inProMode;
 
 + (PMModeManager *)sharedModeManager;
+- (void)toggleProMode;
 
 @end

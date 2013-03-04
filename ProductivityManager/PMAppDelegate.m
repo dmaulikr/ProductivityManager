@@ -10,6 +10,9 @@
 
 @implementation PMAppDelegate
 
+@synthesize prefWindow;
+
+
 - (void)awakeFromNib
 {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
@@ -27,16 +30,18 @@
         sender.title = @"Leave Productivity Mode";
     else if ([sender.title isEqualToString:@"Leave Productivity Mode"])
         sender.title = @"Enter Productivity Mode";
+    
+    [[PMModeManager sharedModeManager] toggleProMode];
 }
 
 - (IBAction)showAbout:(NSMenuItem *)sender
 {
-    [[NSAlert alertWithMessageText:@"About" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Still working on an about window"] runModal];
+    [[NSApplication sharedApplication] orderFrontStandardAboutPanel:self];
 }
 
 - (IBAction)showPrefs:(NSMenuItem *)sender
 {
-    [[NSAlert alertWithMessageText:@"Preferences" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Isn't this an awesome preference window?"] runModal];
+    [prefWindow makeKeyAndOrderFront:self];
 }
 
 

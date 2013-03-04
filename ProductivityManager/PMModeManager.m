@@ -19,6 +19,7 @@ static PMModeManager *_sharedModeManager;
 @implementation PMModeManager
 
 @synthesize inProMode;
+@synthesize timer;
 
 + (PMModeManager *)sharedModeManager
 {
@@ -41,11 +42,41 @@ static PMModeManager *_sharedModeManager;
     inProMode = !inProMode;
     
     if (inProMode)
-        //start timer
-        NSLog(@"on");
+    {
+        timer = [NSTimer timerWithTimeInterval:60 target:self selector:@selector(notify) userInfo:nil repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    }
     else
-        //stop timer / set to nil
-        NSLog(@"off");
+    {
+        [timer invalidate];
+        timer = nil;
+    }
 }
+
+- (void)notify
+{
+    NSUserNotification *notificaiton = [[NSUserNotification alloc] init];
+    notificaiton.title = @"Are you being productive?";
+    notificaiton.informativeText = @"You should consider getting back to work!";
+    notificaiton.actionButtonTitle = @"OK!";
+    notificaiton.otherButtonTitle = @"Later";
+    notificaiton.subtitle = @"testing";
+    notificaiton.hasActionButton = YES;
+    notificaiton.soundName = NSUserNotificationDefaultSoundName;    //use prefs
+    
+    if ([[[[NSWorkspace sharedWorkspace] activeApplication] objectForKey:@"NSApplicationName"] isEqualToString:@"Xcode"])
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notificaiton];        
+}
+
+
+- (BOOL)isProductivityAppActive
+{
+    /*for (NSString *str in proApps)
+        if ([[[[NSWorkspace sharedWorkspace] activeApplication] objectForKey:@"NSApplicationName"] isEqualToString:str])
+            return YES;
+    */
+    return NO;
+}
+
 
 @end

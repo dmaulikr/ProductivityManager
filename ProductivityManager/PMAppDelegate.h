@@ -7,11 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PMModeManager.h"
 
 @interface PMAppDelegate : NSObject <NSApplicationDelegate>
 {
     IBOutlet NSMenu *statusMenu;
     NSStatusItem * statusItem;
 }
+
+@property (unsafe_unretained) IBOutlet NSWindow *prefWindow;
 
 @end
