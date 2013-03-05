@@ -8,11 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PMModeManager.h"
+#import "PMUtils.h"
 
 @interface PMAppDelegate : NSObject <NSApplicationDelegate>
 {
     IBOutlet NSMenu *statusMenu;
     NSStatusItem * statusItem;
+	IBOutlet NSMenuItem *enterExitProMode;
 	
 #pragma mark - Pref outlets
 	IBOutlet NSButton *dismissCB;
@@ -20,8 +22,11 @@
 	IBOutlet NSButton *loginCB;
 	IBOutlet NSButton *enterPMCB;
 	IBOutlet NSSlider *strictSlider;
+	IBOutlet NSTextField *sliderNum;
+	IBOutlet NSPopUpButton *profileSelector;
 }
 
 @property (unsafe_unretained) IBOutlet NSWindow *prefWindow;
+@property (nonatomic, retain) NSUserDefaults *prefs;
 
 @end

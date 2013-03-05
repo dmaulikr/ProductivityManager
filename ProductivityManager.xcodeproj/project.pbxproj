@@ -21,6 +21,7 @@
 		DB2C2AAA16E43A58001384E4 /* todo.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB2C2AA916E43A58001384E4 /* todo.txt */; };
 		DBAB410416E48BD600BCB5C2 /* pen-and-notepad-icon-vector-981374.png in Resources */ = {isa = PBXBuildFile; fileRef = DBAB410316E48BD600BCB5C2 /* pen-and-notepad-icon-vector-981374.png */; };
 		DBAB410816E48DD900BCB5C2 /* PMIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = DBAB410716E48DD900BCB5C2 /* PMIcon.icns */; };
+		DBE8DA7E16E54A7400739055 /* PMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE8DA7D16E54A7400739055 /* PMUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		DB2C2AA916E43A58001384E4 /* todo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = todo.txt; sourceTree = "<group>"; };
 		DBAB410316E48BD600BCB5C2 /* pen-and-notepad-icon-vector-981374.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pen-and-notepad-icon-vector-981374.png"; sourceTree = "<group>"; };
 		DBAB410716E48DD900BCB5C2 /* PMIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PMIcon.icns; sourceTree = "<group>"; };
+		DBE8DA7C16E54A7400739055 /* PMUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMUtils.h; sourceTree = "<group>"; };
+		DBE8DA7D16E54A7400739055 /* PMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 				DB2C2A7916E431AE001384E4 /* Supporting Files */,
 				DB2C2AA616E43712001384E4 /* PMModeManager.h */,
 				DB2C2AA716E43712001384E4 /* PMModeManager.m */,
+				DBE8DA7C16E54A7400739055 /* PMUtils.h */,
+				DBE8DA7D16E54A7400739055 /* PMUtils.m */,
 			);
 			path = ProductivityManager;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				DB2C2A7F16E431AE001384E4 /* main.m in Sources */,
 				DB2C2A8616E431AE001384E4 /* PMAppDelegate.m in Sources */,
 				DB2C2AA816E43712001384E4 /* PMModeManager.m in Sources */,
+				DBE8DA7E16E54A7400739055 /* PMUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

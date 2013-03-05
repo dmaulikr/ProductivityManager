@@ -7,9 +7,9 @@ Add Preferences Window
 Add Preferences:
 Later: Add ability for user to use their own sound
 
-Add backend for prefs
+Read in applications based on profile
 
-Read in applications from prefs
+Add some way to delete profiles
 
 Add notifications based on applicaiton list
 
@@ -34,4 +34,6 @@ bugs to fix
 when user clicks on notificaiton (whether just clicking or when clicking the OK or Later buttons), make sure it sets the previous applicaiton as foreground
 
 Application icon is not showing up in notifications
+
+If close pref window, can't re-open it. Sometimes, attempting to re-open it causes a crash, other times it just does nothing
 

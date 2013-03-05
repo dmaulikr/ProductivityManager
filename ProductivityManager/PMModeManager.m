@@ -43,7 +43,7 @@ static PMModeManager *_sharedModeManager;
     
     if (inProMode)
     {
-        timer = [NSTimer timerWithTimeInterval:60 target:self selector:@selector(notify) userInfo:nil repeats:YES];
+        timer = [NSTimer timerWithTimeInterval:10 target:self selector:@selector(notify) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     }
     else
@@ -58,10 +58,10 @@ static PMModeManager *_sharedModeManager;
     NSUserNotification *notificaiton = [[NSUserNotification alloc] init];
     notificaiton.title = @"Are you being productive?";
     notificaiton.informativeText = @"You should consider getting back to work!";
-    notificaiton.actionButtonTitle = @"OK!";
-    notificaiton.otherButtonTitle = @"Later";
+    //notificaiton.actionButtonTitle = @"OK!";
+    //notificaiton.otherButtonTitle = @"Later";
     notificaiton.subtitle = @"testing";
-    notificaiton.hasActionButton = YES;
+    //notificaiton.hasActionButton = YES;
     notificaiton.soundName = NSUserNotificationDefaultSoundName;    //use prefs
     
     if ([[[[NSWorkspace sharedWorkspace] activeApplication] objectForKey:@"NSApplicationName"] isEqualToString:@"Xcode"])
