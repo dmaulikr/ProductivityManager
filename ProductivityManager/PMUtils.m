@@ -34,7 +34,26 @@
 
 + (NSArray *)applicationsForProfile:(NSString *)profile
 {
-	NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:@"ProductivityManager/profileData.plist"];
+	return [[PMProfileManager sharedProfileManager].profileData objectForKey:profile];
+}
+
++ (void)addApplications:(NSArray *)apps toProfile:(NSString *)profile
+{
+	for (NSURL *url in apps)
+		if ([url.relativeString rangeOfString:@"ProductivityManager"].location != NSNotFound)
+			[self addApplication:url.relativeString toProfile:profile];
+}
+
++ (void)addApplication:(NSString *)app toProfile:(NSString *)profile
+{
+	PMProfileManager *profileManager = [PMProfileManager sharedProfileManager];
+	NSMutableDictionary *profileData = [profileManager.profileData mutableCopy];
+	NSMutableArray *apps = [profileData objectForKey:profile];
+	[apps addObject:app];
+	NSLog(@"apps: %@", apps);
+	[profileData setObject:[apps copy] forKey:profile];
+	NSLog(@"local data: %@", profileData);
+	profileManager.profileData = [profileData copy];
 }
 
 + (NSMenuItem *)selectedItemForString:(NSString *)str andMenu:(NSMenu *)menu

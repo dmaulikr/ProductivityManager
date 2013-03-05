@@ -124,7 +124,7 @@
 
 - (IBAction)addProApp:(NSButton *)sender
 {
-	NSString *path = @"";
+	//NSString *path = @"";
 	NSOpenPanel *openDlg = [NSOpenPanel openPanel];
 	openDlg.canChooseDirectories = NO;
 	openDlg.canChooseFiles = YES;
@@ -134,17 +134,19 @@
 	openDlg.directoryURL = [NSURL URLWithString:@"file://localhost/Applications/"];
 	if ([openDlg runModal])
 	{
-		for (NSURL *url in [openDlg URLs])
+		[PMUtils addApplications:openDlg.URLs toProfile:profileSelector.selectedItem.title];
+		/*for (NSURL *url in [openDlg URLs])
 		{
 			path = url.relativeString;
 			
-			/* if (app name ! in prefs.appList && name != ProductivityManager)
-			 NSMutableArray *wee = [prefs.appList mutableCopy];
-			 [wee addObject:path];
-			 prefs.appList = [wee copy];
-			 */
-		}
+			if (app name ! in prefs.appList && name != ProductivityManager)
+			NSMutableArray *wee = [prefs.appList mutableCopy];
+			[wee addObject:path];
+			prefs.appList = [wee copy];
+			 
+		}*/
 	}
+	NSLog(@"profile data: %@", [PMProfileManager sharedProfileManager].profileData);
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PMProfileManager.h"
 
 @interface PMUtils : NSObject
 
@@ -15,5 +16,7 @@
 + (NSArray *)profiles;
 + (NSArray *)applicationsForProfile:(NSString *)profile;
 + (NSMenuItem *)selectedItemForString:(NSString *)str andMenu:(NSMenu *)menu;
++ (void)addApplication:(NSString *)app toProfile:(NSString *)profile;
++ (void)addApplications:(NSArray *)apps toProfile:(NSString *)profile;
 
 @end
