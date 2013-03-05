@@ -32,6 +32,11 @@
 	return [[NSUserDefaults standardUserDefaults] objectForKey:@"profiles"];
 }
 
++ (NSArray *)applicationsForProfile:(NSString *)profile
+{
+	NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:@"ProductivityManager/profileData.plist"];
+}
+
 + (NSMenuItem *)selectedItemForString:(NSString *)str andMenu:(NSMenu *)menu
 {
 	for (NSMenuItem *item in menu.itemArray)

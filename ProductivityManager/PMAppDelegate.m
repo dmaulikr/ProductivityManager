@@ -36,7 +36,7 @@
     [statusItem setMenu:statusMenu];
     
     //[statusItem setTitle:@"PM"];
-    NSImage *temp = [[NSImage alloc] initWithContentsOfFile:@"/Users/orion/Development/Mac/ProductivityManager/ProductivityManager/pen-and-notepad-icon-vector-981374.png"];
+    NSImage *temp = [[NSImage alloc] initWithContentsOfFile:@"/Users/Orion/Development/Mac/ProductivityManager/ProductivityManager/pen-and-notepad-icon-vector-981374.png"];
     temp.scalesWhenResized = YES;
     temp.size = NSMakeSize(18, 18);
     [statusItem setImage:temp];

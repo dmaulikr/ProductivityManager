@@ -13,6 +13,7 @@
 + (NSString *)applicationNameForPath:(NSString *)path;
 + (NSDictionary *)defaultPrefs;
 + (NSArray *)profiles;
++ (NSArray *)applicationsForProfile:(NSString *)profile;
 + (NSMenuItem *)selectedItemForString:(NSString *)str andMenu:(NSMenu *)menu;
 
 @end
