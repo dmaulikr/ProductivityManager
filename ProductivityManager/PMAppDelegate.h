@@ -24,6 +24,7 @@
 	IBOutlet NSSlider *strictSlider;
 	IBOutlet NSTextField *sliderNum;
 	IBOutlet NSPopUpButton *profileSelector;
+	IBOutlet NSTableView *appTable;
 }
 
 @property (unsafe_unretained) IBOutlet NSWindow *prefWindow;

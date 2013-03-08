@@ -38,13 +38,14 @@ static PMProfileManager *_sharedProfileManager;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-	return _profileData.count;
+	PMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
+	return [[self.profileData objectForKey:delegate.selectedProfile] count];
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
 	PMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
-	return [[_profileData objectForKey:delegate.selectedProfile] objectAtIndex:row];
+	return [PMUtils applicationNameForPath:[[self.profileData objectForKey:delegate.selectedProfile] objectAtIndex:row]];
 }
 
 @end

@@ -52,8 +52,14 @@
 	NSMutableArray *apps = [[profileData objectForKey:profile] mutableCopy];
 	if (!apps) apps = [[NSMutableArray alloc] init];
 	[apps addObject:app];
+	[apps sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 	[profileData setObject:[apps copy] forKey:profile];
 	profileManager.profileData = [profileData copy];
+}
+
++ (void)removeApplication:(NSString *)app fromProfile:(NSString *)profile
+{
+	
 }
 
 + (NSMenuItem *)selectedItemForString:(NSString *)str andMenu:(NSMenu *)menu

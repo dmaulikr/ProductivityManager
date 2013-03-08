@@ -155,6 +155,7 @@
 	{
 		[PMUtils addApplications:openDlg.URLs toProfile:profileSelector.selectedItem.title];
 	}
+	[appTable reloadData];
 }
 
 
