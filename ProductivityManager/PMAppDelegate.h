@@ -28,5 +28,7 @@
 
 @property (unsafe_unretained) IBOutlet NSWindow *prefWindow;
 @property (nonatomic, retain) NSUserDefaults *prefs;
+@property (retain) NSString *selectedProfile;
+@property (readonly, retain) IBOutlet PMProfileManager *profileManager;
 
 @end

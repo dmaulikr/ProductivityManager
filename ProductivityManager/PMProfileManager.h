@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PMProfileManager : NSObject
+@interface PMProfileManager : NSObject <NSTableViewDataSource>
 
 + (PMProfileManager *)sharedProfileManager;
 

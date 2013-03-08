@@ -23,6 +23,9 @@ implement the open at login vs. not
 Add Sparkle?
 
 
+Make window move to current space when user selects "Preferences" or "About"
+
+
 Use algorithm:
 every minute, check what application the user is using. If user is not using a productivity app, increase the count. If the count exceeds X (where X is based on strictness level), notify user.
 Beware of bug: user changing strictness level when in Productivity Mode: if count is too high - app might show notification even if they are in a productivity mode - perhaps add a check for (count too high && currentApp is ! productivity)
@@ -35,5 +38,4 @@ when user clicks on notificaiton (whether just clicking or when clicking the OK 
 
 Application icon is not showing up in notifications
 
-If close pref window, can't re-open it. Sometimes, attempting to re-open it causes a crash, other times it just does nothing
-
+If close pref window, can't re-open it. Usually attempting to re-open it causes a crash. Other times it just does nothing

@@ -18,6 +18,7 @@
 	ans = [[path componentsSeparatedByString:@".app"] objectAtIndex:0];
 	temp = [ans componentsSeparatedByString:@"/"];
 	ans = [temp objectAtIndex:temp.count - 1];
+	ans = [ans stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	
 	return ans;
 }
@@ -40,7 +41,7 @@
 + (void)addApplications:(NSArray *)apps toProfile:(NSString *)profile
 {
 	for (NSURL *url in apps)
-		if ([url.relativeString rangeOfString:@"ProductivityManager"].location != NSNotFound)
+		if ([url.relativeString rangeOfString:@"ProductivityManager"].location == NSNotFound)
 			[self addApplication:url.relativeString toProfile:profile];
 }
 
@@ -48,11 +49,10 @@
 {
 	PMProfileManager *profileManager = [PMProfileManager sharedProfileManager];
 	NSMutableDictionary *profileData = [profileManager.profileData mutableCopy];
-	NSMutableArray *apps = [profileData objectForKey:profile];
+	NSMutableArray *apps = [[profileData objectForKey:profile] mutableCopy];
+	if (!apps) apps = [[NSMutableArray alloc] init];
 	[apps addObject:app];
-	NSLog(@"apps: %@", apps);
 	[profileData setObject:[apps copy] forKey:profile];
-	NSLog(@"local data: %@", profileData);
 	profileManager.profileData = [profileData copy];
 }
 

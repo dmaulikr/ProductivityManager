@@ -12,11 +12,28 @@
 
 @synthesize prefWindow;
 @synthesize prefs = _prefs;
+@synthesize selectedProfile = _selectedProfile;
+@synthesize profileManager = _profileManager;
 
 - (NSUserDefaults *)prefs
 {
 	if (!_prefs) _prefs = [NSUserDefaults standardUserDefaults];
 	return _prefs;
+}
+
+- (void)setSelectedProfile:(NSString *)selectedProfile
+{
+	[profileSelector selectItem:[PMUtils selectedItemForString:selectedProfile andMenu:profileSelector.menu]];
+}
+
+- (NSString *)selectedProfile
+{
+	return profileSelector.selectedItem.title;
+}
+
+- (PMProfileManager *)profileManager
+{
+	return [PMProfileManager sharedProfileManager];
 }
 
 - (id)init
@@ -73,11 +90,13 @@
 
 - (IBAction)showAbout:(NSMenuItem *)sender
 {
+	[NSApp activateIgnoringOtherApps:YES];
     [[NSApplication sharedApplication] orderFrontStandardAboutPanel:self];
 }
 
 - (IBAction)showPrefs:(NSMenuItem *)sender
 {
+	[NSApp activateIgnoringOtherApps:YES];
     [prefWindow makeKeyAndOrderFront:self];
 }
 
@@ -135,18 +154,7 @@
 	if ([openDlg runModal])
 	{
 		[PMUtils addApplications:openDlg.URLs toProfile:profileSelector.selectedItem.title];
-		/*for (NSURL *url in [openDlg URLs])
-		{
-			path = url.relativeString;
-			
-			if (app name ! in prefs.appList && name != ProductivityManager)
-			NSMutableArray *wee = [prefs.appList mutableCopy];
-			[wee addObject:path];
-			prefs.appList = [wee copy];
-			 
-		}*/
 	}
-	NSLog(@"profile data: %@", [PMProfileManager sharedProfileManager].profileData);
 }
 
 
