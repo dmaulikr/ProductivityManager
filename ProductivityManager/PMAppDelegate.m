@@ -161,7 +161,8 @@
 
 - (IBAction)delProApp:(NSButton *)sender
 {
-	
+	NSString *app = [[appTable selectedCell] stringValue];
+    [PMUtils removeApplication:app fromProfile:profileSelector.selectedItem.title];
 }
 
 
