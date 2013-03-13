@@ -59,7 +59,18 @@
 
 + (void)removeApplication:(NSString *)app fromProfile:(NSString *)profile
 {
-	
+	PMProfileManager *profileManager = [PMProfileManager sharedProfileManager];
+    NSMutableDictionary *profileData = [profileManager.profileData mutableCopy];
+    NSMutableArray *apps = [[profileData objectForKey:profile] mutableCopy];
+    for (NSString *str in apps)
+        if ([str rangeOfString:app].location != NSNotFound)
+        {
+            NSLog(@"Removing: %@ which matched %@", str, app);
+            //[apps removeObject:str];
+        }
+    
+    //[profileData setObject:[apps copy] forKey:profile];
+    //profileManager.profileData = [profileData copy];
 }
 
 + (NSMenuItem *)selectedItemForString:(NSString *)str andMenu:(NSMenu *)menu

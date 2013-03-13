@@ -18,5 +18,6 @@
 + (NSMenuItem *)selectedItemForString:(NSString *)str andMenu:(NSMenu *)menu;
 + (void)addApplication:(NSString *)app toProfile:(NSString *)profile;
 + (void)addApplications:(NSArray *)apps toProfile:(NSString *)profile;
++ (void)removeApplication:(NSString *)app fromProfile:(NSString *)profile;
 
 @end

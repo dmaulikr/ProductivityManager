@@ -44,6 +44,9 @@ static PMProfileManager *_sharedProfileManager;
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
+    if (self.profileData == nil)
+        return nil;
+    
 	PMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
 	return [PMUtils applicationNameForPath:[[self.profileData objectForKey:delegate.selectedProfile] objectAtIndex:row]];
 }
