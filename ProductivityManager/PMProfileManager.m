@@ -38,6 +38,9 @@ static PMProfileManager *_sharedProfileManager;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
+	if (self.profileData == nil)
+		return 0;
+	
 	PMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
 	return [[self.profileData objectForKey:delegate.selectedProfile] count];
 }
