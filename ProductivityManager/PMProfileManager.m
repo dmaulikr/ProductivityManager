@@ -51,7 +51,21 @@ static PMProfileManager *_sharedProfileManager;
         return nil;
     
 	PMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
-	return [PMUtils applicationNameForPath:[[self.profileData objectForKey:delegate.selectedProfile] objectAtIndex:row]];
+	
+	if ([tableColumn.identifier isEqualToString:@"img"])
+	{
+		NSLog(@"img: %@", [[NSWorkspace sharedWorkspace] iconForFile:[[self.profileData objectForKey:delegate.selectedProfile] objectAtIndex:row]]);
+		return [[NSWorkspace sharedWorkspace] iconForFile:[[self.profileData objectForKey:delegate.selectedProfile] objectAtIndex:row]];
+	}
+	else if ([tableColumn.identifier isEqualToString:@"appName"])
+	{
+		return [PMUtils applicationNameForPath:[[self.profileData objectForKey:delegate.selectedProfile] objectAtIndex:row]];
+	}
+	else
+	{
+		NSLog(@"Invalid table column");
+		return nil;
+	}
 }
 
 @end
