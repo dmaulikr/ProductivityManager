@@ -32,6 +32,7 @@
 @property (assign) IBOutlet NSWindow *prefWindow;
 @property (nonatomic, retain) NSUserDefaults *prefs;
 @property (retain) NSString *selectedProfile;
+@property (readonly) int strictness;
 @property (readonly, retain) IBOutlet PMProfileManager *profileManager;
 
 @end

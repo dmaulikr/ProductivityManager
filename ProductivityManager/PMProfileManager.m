@@ -65,9 +65,7 @@ static PMProfileManager *_sharedProfileManager;
 	
 	if ([tableColumn.identifier isEqualToString:@"img"])
 	{
-		NSLog(@"img: %@", [[[[self.profileData objectForKey:delegate.selectedProfile] objectAtIndex:row] componentsSeparatedByString:@"file://localhost"] objectAtIndex:1]);
-		//return [[NSWorkspace sharedWorkspace] iconForFile:[[[[self.profileData objectForKey:delegate.selectedProfile] objectAtIndex:row] componentsSeparatedByString:@"file://localhost"] objectAtIndex:1]];
-        return [[NSWorkspace sharedWorkspace] iconForFile:[@"/Applicaitons/Opera.app" stringByStandardizingPath]];
+        return [[NSWorkspace sharedWorkspace] iconForFile:[[[[[self.profileData objectForKey:delegate.selectedProfile] objectAtIndex:row] componentsSeparatedByString:@"file://localhost"] objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 	}
 	else if ([tableColumn.identifier isEqualToString:@"appName"])
 	{

@@ -14,6 +14,7 @@ static PMModeManager *_sharedModeManager;
 @interface PMModeManager()
 
 @property (retain) NSTimer *timer;
+@property int notifyCount;
 
 @end
 
@@ -21,6 +22,7 @@ static PMModeManager *_sharedModeManager;
 
 @synthesize inProMode;
 @synthesize timer;
+@synthesize notifyCount;
 
 + (PMModeManager *)sharedModeManager
 {
@@ -34,6 +36,7 @@ static PMModeManager *_sharedModeManager;
     if (self)
     {
         inProMode = NO;
+		notifyCount = 0;
     }
     return self;
 }
@@ -56,18 +59,27 @@ static PMModeManager *_sharedModeManager;
 
 - (void)notify
 {
-    NSUserNotification *notificaiton = [[NSUserNotification alloc] init];
-    notificaiton.title = @"Are you being productive?";
-    notificaiton.informativeText = @"You should consider getting back to work!";
-    //notificaiton.actionButtonTitle = @"OK!";
-    //notificaiton.otherButtonTitle = @"Later";
-    notificaiton.subtitle = @"testing";
-    //notificaiton.hasActionButton = YES;
-    notificaiton.soundName = NSUserNotificationDefaultSoundName;    //use prefs
-    
-    if (![self isProductivityAppActive]) [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notificaiton];        
+	PMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
+	if (![self isProductivityAppActive])
+	{
+		if (self.notifyCount < (3 * delegate.strictness))
+			self.notifyCount++;
+		else
+		{
+			NSUserNotification *notificaiton = [[NSUserNotification alloc] init];
+			notificaiton.title = @"Are you being productive?";
+			notificaiton.informativeText = @"You should consider getting back to work!";
+			//notificaiton.actionButtonTitle = @"OK!";
+			//notificaiton.otherButtonTitle = @"Later";
+			notificaiton.subtitle = @"testing";
+			//notificaiton.hasActionButton = YES;
+			notificaiton.soundName = NSUserNotificationDefaultSoundName;    //use prefs
+			
+			[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notificaiton];
+			self.notifyCount = 0;
+		}
+	}
 }
-
 
 - (BOOL)isProductivityAppActive
 {

@@ -32,6 +32,11 @@
 	return profileSelector.selectedItem.title;
 }
 
+- (int)strictness
+{
+	return strictSlider.intValue;
+}
+
 - (PMProfileManager *)profileManager
 {
 	return [PMProfileManager sharedProfileManager];
@@ -117,7 +122,7 @@
 	else if ([sender isEqualTo:loginCB])
 	{
 		[self.prefs setBool:loginCB.state forKey:@"openAtLogin"];
-		//TODO: update this in the system
+		(loginCB.state) ? [PMUtils addAppAsLoginItem] : [PMUtils deleteAppFromLoginItem];
 	}
 	else if ([sender isEqualTo:enterPMCB])
 		[self.prefs setBool:enterPMCB.state forKey:@"PModeAtLaunch"];

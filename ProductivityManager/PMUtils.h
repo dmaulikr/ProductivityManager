@@ -20,5 +20,7 @@
 + (void)addApplications:(NSArray *)apps toProfile:(NSString *)profile;
 + (void)removeApplications:(NSArray *)app fromProfile:(NSString *)profile;
 + (void)removeApplication:(NSString *)app fromProfile:(NSString *)profile;
++ (void)addAppAsLoginItem;
++ (void)deleteAppFromLoginItem;
 
 @end
