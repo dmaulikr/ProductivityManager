@@ -7,6 +7,7 @@
 //
 
 #import "PMUtils.h"
+#import "PMAppDelegate.h"
 
 @implementation PMUtils
 
@@ -57,6 +58,12 @@
 	profileManager.profileData = [profileData copy];
 }
 
++ (void)removeApplications:(NSArray *)apps fromProfile:(NSString *)profile
+{
+    for (NSString *string in apps)
+        [self removeApplication:string fromProfile:profile];
+}
+
 + (void)removeApplication:(NSString *)app fromProfile:(NSString *)profile
 {
 	PMProfileManager *profileManager = [PMProfileManager sharedProfileManager];
@@ -65,12 +72,14 @@
     for (NSString *str in apps)
         if ([str rangeOfString:app].location != NSNotFound)
         {
-            NSLog(@"Removing: %@ which matched %@", str, app);
-            //[apps removeObject:str];
+            [apps removeObject:str];
         }
     
-    //[profileData setObject:[apps copy] forKey:profile];
-    //profileManager.profileData = [profileData copy];
+    [profileData setObject:[apps copy] forKey:profile];
+    profileManager.profileData = [profileData copy];
+    
+    PMAppDelegate *delegate = [[NSApplication sharedApplication] delegate];
+    [delegate.appTable reloadData];
 }
 
 + (NSMenuItem *)selectedItemForString:(NSString *)str andMenu:(NSMenu *)menu

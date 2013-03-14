@@ -1,10 +1,6 @@
 TODO:
 
-Add About window
-
-Add Preferences Window
-
-Add Preferences:
+Add Preference:
 Later: Add ability for user to use their own sound
 
 Read in applications based on profile
@@ -23,9 +19,6 @@ implement the open at login vs. not
 Add Sparkle?
 
 
-Make window move to current space when user selects "Preferences" or "About"
-
-
 Use algorithm:
 every minute, check what application the user is using. If user is not using a productivity app, increase the count. If the count exceeds X (where X is based on strictness level), notify user.
 Beware of bug: user changing strictness level when in Productivity Mode: if count is too high - app might show notification even if they are in a productivity mode - perhaps add a check for (count too high && currentApp is ! productivity)
@@ -33,6 +26,10 @@ Beware of bug: user changing strictness level when in Productivity Mode: if coun
 
 
 bugs to fix
+
+Table is not refreshing when -reloadData is called
+
+applicaiton icons in table look like file icons, not the individual application icons
 
 when user clicks on notificaiton (whether just clicking or when clicking the OK or Later buttons), make sure it sets the previous applicaiton as foreground
 

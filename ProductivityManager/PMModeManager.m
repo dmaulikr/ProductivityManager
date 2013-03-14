@@ -7,6 +7,7 @@
 //
 
 #import "PMModeManager.h"
+#import "PMAppDelegate.h"
 
 static PMModeManager *_sharedModeManager;
 
@@ -64,17 +65,20 @@ static PMModeManager *_sharedModeManager;
     //notificaiton.hasActionButton = YES;
     notificaiton.soundName = NSUserNotificationDefaultSoundName;    //use prefs
     
-    if ([[[[NSWorkspace sharedWorkspace] activeApplication] objectForKey:@"NSApplicationName"] isEqualToString:@"Xcode"])
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notificaiton];        
+    if (![self isProductivityAppActive]) [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notificaiton];        
 }
 
 
 - (BOOL)isProductivityAppActive
 {
-    /*for (NSString *str in proApps)
-        if ([[[[NSWorkspace sharedWorkspace] activeApplication] objectForKey:@"NSApplicationName"] isEqualToString:str])
+    PMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
+    NSArray *proApps = [[PMProfileManager sharedProfileManager].profileData objectForKey:delegate.selectedProfile];
+    for (NSString *str in proApps)
+    {
+        NSString *app = [PMUtils applicationNameForPath:str];
+        if ([[[[NSWorkspace sharedWorkspace] activeApplication] objectForKey:@"NSApplicationName"] isEqualToString:app])
             return YES;
-    */
+    }
     return NO;
 }
 

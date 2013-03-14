@@ -14,6 +14,7 @@
 @synthesize prefs = _prefs;
 @synthesize selectedProfile = _selectedProfile;
 @synthesize profileManager = _profileManager;
+@synthesize appTable = _appTable;
 
 - (NSUserDefaults *)prefs
 {
@@ -97,7 +98,7 @@
 - (IBAction)showPrefs:(NSMenuItem *)sender
 {
 	[NSApp activateIgnoringOtherApps:YES];
-    [prefWindow makeKeyAndOrderFront:self];
+    [self.prefWindow makeKeyAndOrderFront:self];
 }
 
 
@@ -127,7 +128,7 @@
 	}
 	else if ([sender isEqualTo:profileSelector])
 	{
-		if ([profileSelector.selectedItem.title isEqualToString:@"Add Profile…"])
+		if ([self.selectedProfile isEqualToString:@"Add Profile…"])
 		{
 			NSLog(@"adding profile");
 			//TODO: add code to add profile
@@ -135,7 +136,7 @@
 		}
 		else
 		{
-			[self.prefs setObject:profileSelector.selectedItem.title forKey:@"profile"];
+			[self.prefs setObject:self.selectedProfile forKey:@"profile"];
 			//TODO: update the rest of the display
 		}
 	}
@@ -153,16 +154,23 @@
 	openDlg.directoryURL = [NSURL URLWithString:@"file://localhost/Applications/"];
 	if ([openDlg runModal])
 	{
-		[PMUtils addApplications:openDlg.URLs toProfile:profileSelector.selectedItem.title];
+		[PMUtils addApplications:openDlg.URLs toProfile:self.selectedProfile];
 	}
-	[appTable reloadData];
+	[self.appTable reloadData];
 }
 
 
 - (IBAction)delProApp:(NSButton *)sender
 {
-	NSString *app = [[appTable selectedCell] stringValue];
-    [PMUtils removeApplication:app fromProfile:profileSelector.selectedItem.title];
+    NSIndexSet *selectedIndicies = [self.appTable selectedRowIndexes];
+    NSMutableArray *selectedItems = [[NSMutableArray alloc] init];
+    NSUInteger i = [selectedIndicies firstIndex];
+    while (i != NSNotFound)
+    {
+        [selectedItems addObject:[[self.profileManager.profileData objectForKey:self.selectedProfile] objectAtIndex:i]];
+        i = [selectedIndicies indexGreaterThanIndex:i];
+    }
+    [PMUtils removeApplications:[selectedItems copy] fromProfile:self.selectedProfile];
 }
 
 

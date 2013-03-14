@@ -24,10 +24,12 @@
 	IBOutlet NSSlider *strictSlider;
 	IBOutlet NSTextField *sliderNum;
 	IBOutlet NSPopUpButton *profileSelector;
-	IBOutlet NSTableView *appTable;
 }
 
-@property (unsafe_unretained) IBOutlet NSWindow *prefWindow;
+@property (weak) IBOutlet NSTableView *appTable;
+@property (weak) IBOutlet NSButton *removeButton;
+
+@property (assign) IBOutlet NSWindow *prefWindow;
 @property (nonatomic, retain) NSUserDefaults *prefs;
 @property (retain) NSString *selectedProfile;
 @property (readonly, retain) IBOutlet PMProfileManager *profileManager;

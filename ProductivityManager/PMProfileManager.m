@@ -34,6 +34,17 @@ static PMProfileManager *_sharedProfileManager;
 	return _sharedProfileManager;
 }
 
+#pragma mark - Delegate Methods
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+    PMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
+
+    NSIndexSet *selectedIndicies = [delegate.appTable selectedRowIndexes];
+    [delegate.removeButton setEnabled:(selectedIndicies.count > 0)];
+}
+
+
 #pragma mark - DataSource Methods
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
@@ -54,8 +65,9 @@ static PMProfileManager *_sharedProfileManager;
 	
 	if ([tableColumn.identifier isEqualToString:@"img"])
 	{
-		NSLog(@"img: %@", [[NSWorkspace sharedWorkspace] iconForFile:[[self.profileData objectForKey:delegate.selectedProfile] objectAtIndex:row]]);
-		return [[NSWorkspace sharedWorkspace] iconForFile:[[self.profileData objectForKey:delegate.selectedProfile] objectAtIndex:row]];
+		NSLog(@"img: %@", [[[[self.profileData objectForKey:delegate.selectedProfile] objectAtIndex:row] componentsSeparatedByString:@"file://localhost"] objectAtIndex:1]);
+		//return [[NSWorkspace sharedWorkspace] iconForFile:[[[[self.profileData objectForKey:delegate.selectedProfile] objectAtIndex:row] componentsSeparatedByString:@"file://localhost"] objectAtIndex:1]];
+        return [[NSWorkspace sharedWorkspace] iconForFile:[@"/Applicaitons/Opera.app" stringByStandardizingPath]];
 	}
 	else if ([tableColumn.identifier isEqualToString:@"appName"])
 	{

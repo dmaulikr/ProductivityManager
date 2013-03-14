@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PMProfileManager.h"
 
 @interface PMModeManager : NSObject
 
