@@ -7,15 +7,6 @@ Read in applications based on profile
 
 Add some way to delete profiles
 
-Add notifications based on applicaiton list
-
-Get graphic for each application - display next to name
-for this, we apparently need the full path to the application
-This brings up quandry:
-do we store dictionary of application name to full path of application or do we store array of full paths to applications and at display time do some fancy string manipulation?
-
-implement the open at login vs. not
-
 Add Sparkle?
 
 
@@ -29,10 +20,6 @@ bugs to fix
 
 Table is not refreshing when -reloadData is called
 
-applicaiton icons in table look like file icons, not the individual application icons
-
 when user clicks on notificaiton (whether just clicking or when clicking the OK or Later buttons), make sure it sets the previous applicaiton as foreground
 
 Application icon is not showing up in notifications
-
-If close pref window, can't re-open it. Usually attempting to re-open it causes a crash. Other times it just does nothing

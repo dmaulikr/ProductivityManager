@@ -10,7 +10,8 @@
 
 @implementation PMAppDelegate
 
-@synthesize prefWindow;
+@synthesize prefWindow = _prefWindow;
+@synthesize profilePanel = _profilePanel;
 @synthesize prefs = _prefs;
 @synthesize selectedProfile = _selectedProfile;
 @synthesize profileManager = _profileManager;
@@ -52,6 +53,13 @@
 	return self;
 }
 
+- (void)populateProfileSelector
+{
+    [profileSelector removeAllItems];
+	[profileSelector addItemsWithTitles:[PMUtils profiles]];
+    [profileSelector addItemWithTitle:@"Edit Profiles…"];
+}
+
 
 - (void)awakeFromNib
 {
@@ -59,16 +67,14 @@
     [statusItem setMenu:statusMenu];
     
     //[statusItem setTitle:@"PM"];
-    NSImage *temp = [[NSImage alloc] initWithContentsOfFile:@"/Users/Orion/Development/Mac/ProductivityManager/ProductivityManager/pen-and-notepad-icon-vector-981374.png"];
+    NSImage *temp = [[NSImage alloc] initWithContentsOfFile:[@"~/Development/Mac/ProductivityManager/ProductivityManager/pen-and-notepad-icon-vector-981374.png" stringByExpandingTildeInPath]];
     temp.scalesWhenResized = YES;
     temp.size = NSMakeSize(18, 18);
     [statusItem setImage:temp];
     
     [statusItem setHighlightMode:YES];
 	
-	[profileSelector removeAllItems];
-	[profileSelector addItemsWithTitles:[PMUtils profiles]];
-	[profileSelector addItemWithTitle:@"Add Profile…"];
+    [self populateProfileSelector];
 	
 	dismissCB.state = [[self.prefs objectForKey:@"dismiss"] boolValue];
 	soundCB.state = [[self.prefs objectForKey:@"sound"] boolValue];
@@ -77,6 +83,8 @@
 	strictSlider.intValue = [[self.prefs objectForKey:@"strictness"] intValue];
 	sliderNum.stringValue = [[self.prefs objectForKey:@"strictness"] stringValue];
 	
+    NSLog(@"thing: %@", [self.prefs objectForKey:@"profile"]);
+    
 	NSMenuItem *menuItem = [PMUtils selectedItemForString:[self.prefs objectForKey:@"profile"] andMenu:profileSelector.menu];
 	if (menuItem)
 		[profileSelector selectItem:menuItem];
@@ -133,18 +141,52 @@
 	}
 	else if ([sender isEqualTo:profileSelector])
 	{
-		if ([self.selectedProfile isEqualToString:@"Add Profile…"])
-		{
-			NSLog(@"adding profile");
-			//TODO: add code to add profile
-			[profileSelector selectItemAtIndex:0];	//this will change to select the new item instead of defaulting to 0
-		}
+        if ([self.selectedProfile isEqualToString:@"Edit Profiles…"])
+        {
+            [profileSelector selectItemAtIndex:0];
+            [self showEditProfileSheet];
+        }
 		else
 		{
 			[self.prefs setObject:self.selectedProfile forKey:@"profile"];
 			//TODO: update the rest of the display
 		}
 	}
+}
+
+- (void)showEditProfileSheet
+{
+    if (!self.profilePanel) NSLog(@"The profile panel didn't exist. Crashing…");
+    
+    [NSApp beginSheet: self.profilePanel
+       modalForWindow: self.prefWindow
+        modalDelegate: self
+       didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
+          contextInfo: nil];
+    
+}
+
+- (IBAction)saveProfiles:(NSButton *)sender
+{
+    //save all data
+    [self closeEditProfileSheet];
+}
+
+- (IBAction)cancelEditProfiles:(NSButton *)sender
+{
+    //reload window - call loadFromNib or something on it?
+    [self closeEditProfileSheet];
+}
+
+
+- (void)closeEditProfileSheet
+{
+    [NSApp endSheet:self.profilePanel];
+}
+
+- (void)didEndSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+{
+    [sheet orderOut:self];
 }
 
 - (IBAction)addProApp:(NSButton *)sender
@@ -172,7 +214,7 @@
     NSUInteger i = [selectedIndicies firstIndex];
     while (i != NSNotFound)
     {
-        [selectedItems addObject:[[self.profileManager.profileData objectForKey:self.selectedProfile] objectAtIndex:i]];
+        [selectedItems addObject:[[PMUtils applicationsForSelectedProfile] objectAtIndex:i]];
         i = [selectedIndicies indexGreaterThanIndex:i];
     }
     [PMUtils removeApplications:[selectedItems copy] fromProfile:self.selectedProfile];

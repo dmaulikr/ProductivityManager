@@ -14,6 +14,8 @@
 + (NSString *)applicationNameForPath:(NSString *)path;
 + (NSDictionary *)defaultPrefs;
 + (NSArray *)profiles;
++ (void)setProfiles:(NSArray *)profiles;
++ (NSArray *)applicationsForSelectedProfile;
 + (NSArray *)applicationsForProfile:(NSString *)profile;
 + (NSMenuItem *)selectedItemForString:(NSString *)str andMenu:(NSMenu *)menu;
 + (void)addApplication:(NSString *)app toProfile:(NSString *)profile;

@@ -28,11 +28,16 @@
 
 @property (weak) IBOutlet NSTableView *appTable;
 @property (weak) IBOutlet NSButton *removeButton;
+@property (weak) IBOutlet NSButton *removeProfileButton;
 
 @property (assign) IBOutlet NSWindow *prefWindow;
+@property (assign) IBOutlet NSWindow *profilePanel;
 @property (nonatomic, retain) NSUserDefaults *prefs;
 @property (retain) NSString *selectedProfile;
 @property (readonly) int strictness;
 @property (readonly, retain) IBOutlet PMProfileManager *profileManager;
+
+
+- (void)populateProfileSelector;
 
 @end

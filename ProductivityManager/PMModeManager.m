@@ -84,7 +84,7 @@ static PMModeManager *_sharedModeManager;
 - (BOOL)isProductivityAppActive
 {
     PMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
-    NSArray *proApps = [[PMProfileManager sharedProfileManager].profileData objectForKey:delegate.selectedProfile];
+    NSArray *proApps = [PMUtils applicationsForSelectedProfile];
     for (NSString *str in proApps)
     {
         NSString *app = [PMUtils applicationNameForPath:str];

@@ -2,10 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Default</key>
+	<key>3Dtesting</key>
 	<array>
-		<string>file://localhost/Applications/Finale%20PrintMusic%202011.app</string>
-		<string>file://localhost/Applications/Sublime%20Text%202.app</string>
+		<string>file://localhost/Applications/Final%20Cut%20Express.app</string>
 	</array>
 </dict>
 </plist>

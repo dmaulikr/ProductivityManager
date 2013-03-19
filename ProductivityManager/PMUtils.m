@@ -34,6 +34,17 @@
 	return [[NSUserDefaults standardUserDefaults] objectForKey:@"profiles"];
 }
 
++ (void)setProfiles:(NSArray *)profiles
+{
+    [[NSUserDefaults standardUserDefaults] setObject:profiles forKey:@"profiles"];
+}
+
++ (NSArray *)applicationsForSelectedProfile
+{
+    PMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
+    return [self applicationsForProfile:delegate.selectedProfile];
+}
+
 + (NSArray *)applicationsForProfile:(NSString *)profile
 {
 	return [[PMProfileManager sharedProfileManager].profileData objectForKey:profile];

@@ -20,6 +20,7 @@
 		DB2C2A9D16E431AE001384E4 /* ProductivityManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2C2A9C16E431AE001384E4 /* ProductivityManagerTests.m */; };
 		DB2C2AA816E43712001384E4 /* PMModeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2C2AA716E43712001384E4 /* PMModeManager.m */; };
 		DB2C2AAA16E43A58001384E4 /* todo.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB2C2AA916E43A58001384E4 /* todo.txt */; };
+		DB85F10C16F3D18700855368 /* PMProfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DB85F10B16F3D18700855368 /* PMProfileDataSource.m */; };
 		DBAB410416E48BD600BCB5C2 /* pen-and-notepad-icon-vector-981374.png in Resources */ = {isa = PBXBuildFile; fileRef = DBAB410316E48BD600BCB5C2 /* pen-and-notepad-icon-vector-981374.png */; };
 		DBAB410816E48DD900BCB5C2 /* PMIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = DBAB410716E48DD900BCB5C2 /* PMIcon.icns */; };
 		DBE8DA7E16E54A7400739055 /* PMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE8DA7D16E54A7400739055 /* PMUtils.m */; };
@@ -60,6 +61,8 @@
 		DB2C2AA616E43712001384E4 /* PMModeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMModeManager.h; sourceTree = "<group>"; };
 		DB2C2AA716E43712001384E4 /* PMModeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMModeManager.m; sourceTree = "<group>"; };
 		DB2C2AA916E43A58001384E4 /* todo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = todo.txt; sourceTree = "<group>"; };
+		DB85F10A16F3D18700855368 /* PMProfileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMProfileDataSource.h; sourceTree = "<group>"; };
+		DB85F10B16F3D18700855368 /* PMProfileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMProfileDataSource.m; sourceTree = "<group>"; };
 		DBAB410316E48BD600BCB5C2 /* pen-and-notepad-icon-vector-981374.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pen-and-notepad-icon-vector-981374.png"; path = "ProductivityManager/pen-and-notepad-icon-vector-981374.png"; sourceTree = SOURCE_ROOT; };
 		DBAB410716E48DD900BCB5C2 /* PMIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PMIcon.icns; sourceTree = "<group>"; };
 		DBE8DA7C16E54A7400739055 /* PMUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMUtils.h; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 				DBE8DA7D16E54A7400739055 /* PMUtils.m */,
 				DB0A577616E6592F00760832 /* PMProfileManager.h */,
 				DB0A577716E6592F00760832 /* PMProfileManager.m */,
+				DB85F10A16F3D18700855368 /* PMProfileDataSource.h */,
+				DB85F10B16F3D18700855368 /* PMProfileDataSource.m */,
 			);
 			path = ProductivityManager;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 				DB2C2AA816E43712001384E4 /* PMModeManager.m in Sources */,
 				DBE8DA7E16E54A7400739055 /* PMUtils.m in Sources */,
 				DB0A577816E6592F00760832 /* PMProfileManager.m in Sources */,
+				DB85F10C16F3D18700855368 /* PMProfileDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

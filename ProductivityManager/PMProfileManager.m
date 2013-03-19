@@ -34,16 +34,27 @@ static PMProfileManager *_sharedProfileManager;
 	return _sharedProfileManager;
 }
 
+- (void)updateProfile:(NSString *)oldProfile to:(NSString *)newProfile
+{
+    NSArray *tempApps = [self.profileData objectForKey:oldProfile];
+    NSMutableDictionary *tempData = [self.profileData mutableCopy];
+    [tempData removeObjectForKey:oldProfile];
+    [tempData setObject:tempApps forKey:newProfile];
+    self.profileData = [tempData copy];
+}
+
+
 #pragma mark - Delegate Methods
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
     PMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
 
-    NSIndexSet *selectedIndicies = [delegate.appTable selectedRowIndexes];
+    NSTableView *table = [notification object];
+    
+    NSIndexSet *selectedIndicies = [table selectedRowIndexes];
     [delegate.removeButton setEnabled:(selectedIndicies.count > 0)];
 }
-
 
 #pragma mark - DataSource Methods
 
@@ -62,7 +73,7 @@ static PMProfileManager *_sharedProfileManager;
         return nil;
     
 	PMAppDelegate *delegate = [NSApplication sharedApplication].delegate;
-	
+    
 	if ([tableColumn.identifier isEqualToString:@"img"])
 	{
         return [[NSWorkspace sharedWorkspace] iconForFile:[[[[[self.profileData objectForKey:delegate.selectedProfile] objectAtIndex:row] componentsSeparatedByString:@"file://localhost"] objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];

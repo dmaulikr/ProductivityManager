@@ -14,5 +14,6 @@
 
 @property (retain) NSDictionary *profileData;
 
+- (void)updateProfile:(NSString *)oldProfile to:(NSString *)newProfile;
 
 @end
